@@ -1,7 +1,5 @@
 package org.iitwf.selenium.lib;
 
-import java.io.IOException;
-
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
