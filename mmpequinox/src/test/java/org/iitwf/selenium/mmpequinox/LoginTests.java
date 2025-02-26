@@ -6,8 +6,6 @@ import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.selenium.lib.ExcelUtils;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
