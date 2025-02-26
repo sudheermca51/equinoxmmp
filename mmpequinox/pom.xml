@@ -6,17 +6,13 @@
 	<groupId>org.iitwf.selenium</groupId>
 	<artifactId>mmpequinox</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
 	<name>mmpequinox</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>11</maven.compiler.release>
 	</properties>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>com.aventstack</groupId>
