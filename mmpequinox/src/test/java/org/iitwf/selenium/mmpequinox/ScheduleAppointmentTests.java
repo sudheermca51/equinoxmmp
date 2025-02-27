@@ -2,7 +2,6 @@ package org.iitwf.selenium.mmpequinox;
 
 import java.io.IOException;
 import java.util.HashMap;
-
 import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.mmp.pages.patientmodule.ScheduleAppointmentPage;
