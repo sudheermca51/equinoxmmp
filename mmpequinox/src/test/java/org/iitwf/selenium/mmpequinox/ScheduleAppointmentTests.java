@@ -2,7 +2,6 @@ package org.iitwf.selenium.mmpequinox;
 
 import java.io.IOException;
 import java.util.HashMap;
-
 import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.mmp.pages.patientmodule.ScheduleAppointmentPage;
@@ -13,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
+
 
 @Listeners(ListenerUtility.class)
 public class ScheduleAppointmentTests extends FrameworkLibrary{
