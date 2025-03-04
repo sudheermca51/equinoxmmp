@@ -30,6 +30,7 @@ public class LoginTests extends FrameworkLibrary {
 	{
 		 
 		MMPUtility mmpUtil = new MMPUtility(driver);
+		launchBrowser(prop.getProperty("patient_url"));
 		mmpUtil.login(username,password);
 		String actualText = driver.findElement(By.xpath("//h3[normalize-space()='Patient Portal']")).getText();
 		String expectedText = "Patient Portal";
