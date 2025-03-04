@@ -31,6 +31,9 @@ public class EditProfileTests extends FrameworkLibrary {
 		hPage.navigatetoAModule("Profile");
 		extentTest.info("Navigating to Profile Page");
 		
+		
+		
+		
 		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
 		String screenshotPath = screenshotUtil.captureScreenshot("EditProfilePage_step1");
 		extentTest.addScreenCaptureFromPath(screenshotPath,"Edit_Profile_Landing_Page");
