@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
+<suite name="Suite" thread-count="1" parallel="tests">
+  <test  name="Test1">
     <classes>
-      <class name="org.iitwf.selenium.mmpequinox.SanitySuiteValidateText"/>
-      <class name="org.iitwf.selenium.mmpequinox.ScheduleAppointmentTests"/>
-      <class name="org.iitwf.selenium.mmpequinox.RegistrationPatientTests"/>
-      <class name="org.iitwf.selenium.mmpequinox.LoginTests"/>
-      <class name="org.iitwf.selenium.mmpequinox.SanitySuite"/>
-      <class name="org.iitwf.selenium.mmpequinox.EditProfileTests"/>
+		<class name="org.iitwf.selenium.mmpequinox.ScheduleAppointmentTests"/>
+      
+      
     </classes>
+    
   </test> <!-- Test -->
+  
+  <test thread-count="5" name="Test2">
+    <classes>
+		<class name="org.iitwf.selenium.mmpequinox.SanitySuiteValidateText"/>
+		  </classes>
+  </test> <!-- Test -->
+  <test thread-count="5" name="Test3">
+    <classes>
+		<class name="org.iitwf.selenium.mmpequinox.RegistrationPatientTests"/>
+		  </classes>
+  </test> <!-- Test -->
+  
+   <test thread-count="5" name="Test4">
+    <classes>
+		<class name="org.iitwf.selenium.mmpequinox.LoginTests"/>
+		  </classes>
+  </test> <!-- Test -->
+  
+  
+  
+   <test thread-count="5" name="Test6">
+    <classes>
+		<class name="org.iitwf.selenium.mmpequinox.EditProfileTests"/>
+		  </classes>
+  </test> <!-- Test -->
+  
 </suite> <!-- Suite -->
