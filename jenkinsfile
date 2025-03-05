@@ -1,0 +1,28 @@
+pipeline 
+	{
+		agent any
+
+		stages 
+		{
+			stage('mmp_health_check') 
+			{
+				steps 
+				{
+					echo 'Hello World'
+					bat 'ping 85.209.95.122 -n 5'
+					 
+				}
+			}
+			stage('execute_reg') 
+			{
+				steps 
+				{
+					echo 'Good Morning'
+					git branch: 'main', url: 'https://github.com/sudheermca51/equinoxmmp.git'
+					dir('mmpequinox') {
+                            bat 'mvn clean test'        
+                    }
+				}
+			}
+		}
+	}
