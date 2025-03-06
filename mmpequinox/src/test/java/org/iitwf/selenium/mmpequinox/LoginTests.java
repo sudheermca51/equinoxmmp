@@ -34,8 +34,7 @@ public class LoginTests extends FrameworkLibrary {
 	public void testLogin(String username,String password) throws Exception
 	{
 
-		
-		extentTest = extentReports.createTest("############Validate LogIn Tests########");
+	extentTest = extentReports.createTest("############Validate LogIn Tests########");
 
 		launchBrowser(prop.getProperty("patient_url")); 
 		MMPUtility mmpUtil = new MMPUtility(driver);

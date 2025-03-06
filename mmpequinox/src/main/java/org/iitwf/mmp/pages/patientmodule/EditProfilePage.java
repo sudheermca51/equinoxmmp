@@ -45,17 +45,17 @@ public class EditProfilePage {
 		action.moveToElement(fnameWE);
 		action.sendKeys(Keys.CLEAR);
 		expectedFName = JavaUtility.generateRandomString("QAAUT");
-<<<<<<< HEAD
+
 		System.out.println(expectedFName);
 		action.sendKeys(expectedFName);
-=======
+
 		action.sendKeys(expectedFName);
 		System.out.println("ExpectedFName :" + expectedFName);
 		
 		
 		
 		
->>>>>>> refs/heads/main
+
 		
 		action.perform();
 		
@@ -96,20 +96,18 @@ public class EditProfilePage {
 		alrt.accept();
 		
 		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
-		wait.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
+		WebDriverWait wait2 = new WebDriverWait(driver,Duration.ofSeconds(15));
+		wait2.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
 		
 		
 		JavascriptExecutor js = ((JavascriptExecutor)driver);
 		 js.executeScript("arguments[0].click();",fnameWE);
 		 
 		
-		String actualFName = fnameWE.getDomProperty("value");
+		
 
 		
-		  Alert alrt = driver.switchTo().alert(); 
-		  System.out.println("Alert Text " + alrt.getText());
-		  alrt.accept();
+	
 		  
 		  wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 			wait.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
@@ -119,7 +117,8 @@ public class EditProfilePage {
 //				String actualFName = 	fnameWE.getDomAttribute("value");
 //				System.out.println(actualFName);
 			
-			String actualFName = 	fnameWE.getText();
+			String actualFName = fnameWE.getDomProperty("value");
+
 			System.out.println(actualFName);
 	  
 		  

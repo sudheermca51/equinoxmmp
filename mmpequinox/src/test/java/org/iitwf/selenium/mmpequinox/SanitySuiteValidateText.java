@@ -21,14 +21,14 @@ public class SanitySuiteValidateText extends FrameworkLibrary {
  
 	@Test
 	public void performHealthCheckTests()
-<<<<<<< HEAD
+
 	{	
-=======
+
 	
 	
-	{
+	
 		
->>>>>>> refs/heads/main
+
 		
 		launchBrowser(prop.getProperty("patient_url"));
 		MMPUtility mmpUtil = new MMPUtility(driver);
