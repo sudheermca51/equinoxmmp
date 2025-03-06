@@ -39,7 +39,14 @@ public class EditProfileTests extends FrameworkLibrary {
 
 		EditProfilePage editProjObj = new EditProfilePage(driver);
 		String actualFName = editProjObj.editAllFields();
+<<<<<<< HEAD
 		String expectedFName=editProjObj.expectedFName;
+=======
+		System.out.println(actualFName);
+//		String expectedFName=prop.getProperty("patient_username");
+		String expectedFName = editProjObj.expectedFName;
+		
+>>>>>>> refs/heads/main
 		extentTest.info("Expected FName::" + expectedFName);
 		extentTest.info("Actual FName::"+  actualFName );
 		

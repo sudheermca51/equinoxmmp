@@ -33,11 +33,18 @@ public class LoginTests extends FrameworkLibrary {
 	@Test(dataProvider="DP")
 	public void testLogin(String username,String password) throws Exception
 	{
+<<<<<<< HEAD
 		
 		extentTest = extentReports.createTest("############Validate LogIn Tests########");
+=======
+>>>>>>> refs/heads/main
 		launchBrowser(prop.getProperty("patient_url")); 
 		MMPUtility mmpUtil = new MMPUtility(driver);
+<<<<<<< HEAD
 		
+=======
+		launchBrowser(prop.getProperty("patient_url"));
+>>>>>>> refs/heads/main
 		mmpUtil.login(username,password);
 		
 		String actualText = driver.findElement(By.xpath("//h3[normalize-space()='Patient Portal']")).getText();
@@ -46,7 +53,12 @@ public class LoginTests extends FrameworkLibrary {
 	    extentTest.addScreenCaptureFromPath(screenshotPath,"Navigation_To_Home_Page");
 		String expectedText = "Patient Portal";
 		Assert.assertEquals(actualText, expectedText);
+<<<<<<< HEAD
 		}
+=======
+		
+		
+>>>>>>> refs/heads/main
 		 
 	
 

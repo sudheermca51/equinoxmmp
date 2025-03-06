@@ -37,7 +37,7 @@ public class EditProfilePage {
 	{
 		Actions action = new Actions(driver);
 
-		action.moveToElement(driver.findElement(By.id("Ebtn")));
+		action.moveToElement(editbutton);
 		action.click();
 
 		//Fname Logic
@@ -45,18 +45,38 @@ public class EditProfilePage {
 		action.moveToElement(fnameWE);
 		action.sendKeys(Keys.CLEAR);
 		expectedFName = JavaUtility.generateRandomString("QAAUT");
+<<<<<<< HEAD
 		System.out.println(expectedFName);
 		action.sendKeys(expectedFName);
+=======
+		action.sendKeys(expectedFName);
+		System.out.println("ExpectedFName :" + expectedFName);
+		
+		
+		
+		
+>>>>>>> refs/heads/main
 		
 		action.perform();
+		
+		
 
 		//Age Logic
 		WebElement ageWE = driver.findElement(By.id("age"));
 		action.moveToElement(ageWE);
 		action.sendKeys(Keys.CLEAR);
 		String ageExpected = JavaUtility.generateRandomDigits(30,99)+"";
+<<<<<<< HEAD
 		String ageActual = ageWE.getDomProperty("value");
 		action.sendKeys(ageActual,ageExpected);
+=======
+		System.out.println("Expected Age :" + ageExpected);
+		action.sendKeys(ageExpected);
+		
+//		 String ageActual = ageWE.getDomProperty("value");
+//			action.sendKeys(ageActual,ageExpected);
+		
+>>>>>>> refs/heads/main
 		action.perform();
 
 
@@ -64,7 +84,13 @@ public class EditProfilePage {
 		action.moveToElement(saveButton);
 		action.click(saveButton);
 		action.perform();
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.alertIsPresent());
+		
+	
 
+<<<<<<< HEAD
 		Alert alrt = driver.switchTo().alert();
 		System.out.println("Alert Text " + alrt.getText());
 		alrt.accept();
@@ -79,6 +105,29 @@ public class EditProfilePage {
 		 
 		
 		String actualFName = fnameWE.getDomProperty("value");
+=======
+		
+		  Alert alrt = driver.switchTo().alert(); 
+		  System.out.println("Alert Text " + alrt.getText());
+		  alrt.accept();
+		  
+		  wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+			wait.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
+			
+//			 String actualFName = fnameWE.getDomProperty("value");
+//				System.out.println(actualFName);
+//				String actualFName = 	fnameWE.getDomAttribute("value");
+//				System.out.println(actualFName);
+			
+			String actualFName = 	fnameWE.getText();
+			System.out.println(actualFName);
+	  
+		  
+		  
+		  
+		 
+		 
+>>>>>>> refs/heads/main
 
 		return actualFName;
 

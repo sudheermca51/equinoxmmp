@@ -21,10 +21,18 @@ public class SanitySuiteValidateText extends FrameworkLibrary {
  
 	@Test
 	public void performHealthCheckTests()
+<<<<<<< HEAD
 	{	
+=======
+	
+	
+	{
+		
+>>>>>>> refs/heads/main
 		
 		launchBrowser(prop.getProperty("patient_url"));
 		MMPUtility mmpUtil = new MMPUtility(driver);
+		launchBrowser(prop.getProperty("patient_url"));
 		mmpUtil.login(prop.getProperty("patient_username"),prop.getProperty("patient_password"));
 		
 		HashMap<String,String> actualMenuTitleText = fetchMenuTitleText();
