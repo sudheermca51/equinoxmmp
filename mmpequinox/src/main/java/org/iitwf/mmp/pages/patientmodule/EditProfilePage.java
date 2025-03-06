@@ -66,17 +66,17 @@ public class EditProfilePage {
 		action.moveToElement(ageWE);
 		action.sendKeys(Keys.CLEAR);
 		String ageExpected = JavaUtility.generateRandomDigits(30,99)+"";
-<<<<<<< HEAD
+
 		String ageActual = ageWE.getDomProperty("value");
 		action.sendKeys(ageActual,ageExpected);
-=======
+
 		System.out.println("Expected Age :" + ageExpected);
 		action.sendKeys(ageExpected);
 		
 //		 String ageActual = ageWE.getDomProperty("value");
 //			action.sendKeys(ageActual,ageExpected);
 		
->>>>>>> refs/heads/main
+
 		action.perform();
 
 
@@ -90,7 +90,7 @@ public class EditProfilePage {
 		
 	
 
-<<<<<<< HEAD
+
 		Alert alrt = driver.switchTo().alert();
 		System.out.println("Alert Text " + alrt.getText());
 		alrt.accept();
@@ -105,7 +105,7 @@ public class EditProfilePage {
 		 
 		
 		String actualFName = fnameWE.getDomProperty("value");
-=======
+
 		
 		  Alert alrt = driver.switchTo().alert(); 
 		  System.out.println("Alert Text " + alrt.getText());
@@ -127,7 +127,7 @@ public class EditProfilePage {
 		  
 		 
 		 
->>>>>>> refs/heads/main
+
 
 		return actualFName;
 
