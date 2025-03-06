@@ -20,9 +20,13 @@ public class LoginTests extends FrameworkLibrary {
 //			//h3[normalize-space()='Patient Portal']
 //
 //			String expectedText = "Patient Portal";
+<<<<<<< HEAD
 	
 	private ExtentTest extentTest;
 	
+=======
+	private ExtentTest extentTest;
+>>>>>>> refs/heads/pr-5
 	@DataProvider(name="DP")
 	public String[][] feedData() throws IOException
 	{
@@ -33,9 +37,14 @@ public class LoginTests extends FrameworkLibrary {
 	@Test(dataProvider="DP")
 	public void testLogin(String username,String password) throws Exception
 	{
+<<<<<<< HEAD
 
 	extentTest = extentReports.createTest("############Validate LogIn Tests########");
 
+=======
+		
+		extentTest = extentReports.createTest("############Validate LogIn Tests########");
+>>>>>>> refs/heads/pr-5
 		launchBrowser(prop.getProperty("patient_url")); 
 		MMPUtility mmpUtil = new MMPUtility(driver);
 
