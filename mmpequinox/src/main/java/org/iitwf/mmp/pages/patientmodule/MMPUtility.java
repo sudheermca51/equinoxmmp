@@ -19,4 +19,12 @@ public class MMPUtility {
 		driver.findElement(By.name("submit")).click();
 		driver.getTitle();
 	}
+	
+	public void launchBrowser(String url )
+	{
+		driver.manage().window().maximize();
+		driver.get(url);
+
+	}
+	
 }
