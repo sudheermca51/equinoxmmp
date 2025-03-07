@@ -38,7 +38,7 @@ public class LoginTests extends FrameworkLibrary {
 		String actualText = driver.findElement(By.xpath("//h3[normalize-space()='Patient Portal']")).getText();
 		String expectedText = "Patient Portal";
 		Assert.assertEquals(actualText, expectedText);
-		launchBrowser(prop.getProperty("patient_url"));
+		//launchBrowser(prop.getProperty("patient_url"));
 		
 		 
 	}
