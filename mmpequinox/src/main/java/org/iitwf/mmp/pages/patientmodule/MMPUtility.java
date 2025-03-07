@@ -19,4 +19,13 @@ public class MMPUtility {
 		driver.findElement(By.name("submit")).click();
 		driver.getTitle();
 	}
+	
+	public void adminLogin(String username,String password)
+	{
+
+		driver.findElement(By.id("username")).sendKeys(username);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.name("admin")).click();
+		
+	}
 }
