@@ -75,6 +75,7 @@ public class JavaUtility {
 		Random rand = new Random();
 		int digit1 =65+ rand.nextInt((90-65+1));
 		char upperCaseCh = (char) digit1;
+		System.out.println("Upper Case Char::: " + upperCaseCh);
 		
 		
 		int digit2 = 97+rand.nextInt((122-97+1));
@@ -84,6 +85,7 @@ public class JavaUtility {
 		System.out.println("Lower Case Char::: " + lowerCaseCh);
 		
 		String randomString = str+upperCaseCh+lowerCaseCh;
+		System.out.println("Random String :" + randomString);
 		
 		return randomString;
 		
