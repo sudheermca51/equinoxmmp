@@ -17,15 +17,17 @@ public class Messages {
 		this.driver = driver;
 	}
 	
-	public void contactReason(String reason)
+	public String contactReason(String reason)
 	{
 		driver.findElement(contactReason).sendKeys(reason);
+		return reason;
 		
 	}
 	
-	public void message(String msg)
+	public String message(String msg)
 	{
 		driver.findElement(message).sendKeys(msg);
+		return msg;
 	}
 	
 			
