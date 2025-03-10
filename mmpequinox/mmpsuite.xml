@@ -9,6 +9,7 @@
       <class name="org.iitwf.selenium.mmpequinox.LoginTests"/>
       <class name="org.iitwf.selenium.mmpequinox.SanitySuite"/>
       <class name="org.iitwf.selenium.mmpequinox.EditProfileTests"/>
+      <class name="org.iitwf.selenium.mmpequinox.MessageTests"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
