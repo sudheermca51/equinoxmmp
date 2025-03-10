@@ -32,21 +32,28 @@ public class MessageTests extends FrameworkLibrary{
 		HomePage hPage = new HomePage(driver);
 		extentTest.info("clicking on Messages Tile");
 		hPage.navigatetoAModule("Messages");
+		
 		msg = new Messages(driver);
+		
 		extentTest.info("Entering Contact Reason");
 		msg.contactReason("Running High Fever");
+		
 		extentTest.info("Entering message details");
 		msg.message("Need to get an appointment with Doctor");
+		
 		msg.send();
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  // Wait for up to 10 seconds
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		extentTest.info("Switching to Alert");
 		Alert alert1 = driver.switchTo().alert();
 		String actual = alert1.getText();
+		
 		extentTest.info("Getting Actual Alert Text - " + " " + actual);
 		String expected ="Messages Successfully sent.";
 		Assert.assertEquals(actual, expected);
 		alert.accept();  
+		
 		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
         String screenshotPath = screenshotUtil.captureScreenshot("Message_alert");
         extentTest.addScreenCaptureFromPath(screenshotPath,"Message sent successfuly alert");
