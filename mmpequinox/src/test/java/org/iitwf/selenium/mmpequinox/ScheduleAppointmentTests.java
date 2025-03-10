@@ -1,5 +1,7 @@
 package org.iitwf.selenium.mmpequinox;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.io.IOException;
 import java.util.HashMap;
 import org.iitwf.mmp.pages.patientmodule.HomePage;
@@ -70,7 +72,7 @@ public class ScheduleAppointmentTests extends FrameworkLibrary{
         screenshotPath = screenshotUtil.captureScreenshot("ScheduleAppointment_Page2");
         extentTest.addScreenCaptureFromPath(screenshotPath,"Schedule_Appointment_Completed");
 
-		Assert.assertEquals(actualHMap, expectedHMap,"Booking is unsuccessful");		 
+		AssertJUnit.assertEquals(actualHMap, expectedHMap);		 
 	}
 }
 
