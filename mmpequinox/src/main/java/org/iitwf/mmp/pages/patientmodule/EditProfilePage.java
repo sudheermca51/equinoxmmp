@@ -1,10 +1,7 @@
 package org.iitwf.mmp.pages.patientmodule;
 
 import static org.testng.Assert.assertEquals;
-
 import java.io.IOException;
-
-
 import org.iitwf.selenium.lib.ScreenshotUtil;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -79,6 +76,7 @@ public class EditProfilePage {
 		action.click(saveButton);
 		action.perform();
 		String screenshotPath2 = screenshotUtil.captureScreenshot("save button textbox");  
+		
 		return actualFName;
 
 

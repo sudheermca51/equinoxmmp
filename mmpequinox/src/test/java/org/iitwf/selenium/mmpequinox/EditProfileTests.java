@@ -2,15 +2,13 @@ package org.iitwf.selenium.mmpequinox;
 
 import org.testng.annotations.Test;
 
+import org.testng.Assert;
 import java.io.IOException;
-
 import org.iitwf.mmp.pages.patientmodule.EditProfilePage;
 import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ScreenshotUtil;
-
-
 import com.aventstack.extentreports.ExtentTest;
 
 public class EditProfileTests extends FrameworkLibrary {
@@ -43,7 +41,8 @@ public class EditProfileTests extends FrameworkLibrary {
 		
 		String actualFName = editProjObj.editAllFields();
 		System.out.println("actualFName"+actualFName);
-		String expectedFName=prop.getProperty("patient_username");
+		
+		String expectedFName=prop.getProperty(screenshotPath, actualFName);
 		System.out.println("expectedFName"+expectedFName);
 		
 		extentTest.info("Expected FName::" + expectedFName);
@@ -51,7 +50,7 @@ public class EditProfileTests extends FrameworkLibrary {
 		
 		
 		
- 		//AssertJUnit.assertEquals(actualFName, expectedFName);
+		Assert.assertEquals(actualFName, expectedFName);
 	
 		
 		
