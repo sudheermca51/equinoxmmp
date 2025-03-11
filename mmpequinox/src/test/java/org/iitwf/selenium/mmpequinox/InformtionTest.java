@@ -3,15 +3,13 @@ package org.iitwf.selenium.mmpequinox;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.io.IOException;
-
 import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.InformationPage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ListenerUtility;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+
 
 import com.aventstack.extentreports.ExtentTest;
 
@@ -39,8 +37,6 @@ public void InformationMessage() throws IOException
 	boolean result = VIPage.validateInformation();
 	AssertJUnit.assertTrue(result);
 	extentTest.info("Display the information");
-	
-	
 		
 	}	
 

@@ -1,7 +1,6 @@
 package org.iitwf.mmp.pages.patientmodule;
 
 import java.util.Arrays;
-
 import org.iitwf.selenium.lib.ScreenshotUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +27,6 @@ public class InformationPage {
 	{
 		
 		this.driver = driver;
-	
 		screenshotUtil = new ScreenshotUtil(driver);	
 	}
 	
