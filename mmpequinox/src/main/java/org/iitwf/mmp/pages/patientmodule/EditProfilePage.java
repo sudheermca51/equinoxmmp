@@ -13,8 +13,8 @@ import javaprograms.RandomEx;
 
 public class EditProfilePage {
 
-	@FindBy(id="Ebtn")
-	private WebElement editbutton;
+	//@FindBy(id="Ebtn")
+	//private WebElement editbutton;
 	
 	protected WebDriver driver;
 	public EditProfilePage(WebDriver driver)
@@ -24,7 +24,7 @@ public class EditProfilePage {
 			throw new IllegalStateException("This is not Profile Page," +
 					" current page is: " + driver.getCurrentUrl());
 		}
-		PageFactory.initElements(driver, this);
+		//PageFactory.initElements(driver, this);
 	}
 	public String editAllFields()
 	{
@@ -64,7 +64,7 @@ public class EditProfilePage {
 		return actualFName;
 
 	}
-	public  void editProfileTests()
+	/*public  String editProfileTests()
 	{
 		editbutton.click();
 		
@@ -92,7 +92,8 @@ public class EditProfilePage {
 		{
 			System.out.println("FName value is updated");
 		}
-	}
+		return actualfnameValue;
+	}*/
 	 
 		public  String handleAlerts()
 		{

@@ -26,5 +26,11 @@ public class MMPUtility {
 		driver.get(url);
 
 	}
+	public void navigateToASearchModule(String moduleName) {
+		// TODO Auto-generated method stub
+		
+		driver.findElement(By.xpath("//span[normalize-space() = '"+moduleName+"']")).click();
+	
+}
 	
 }

@@ -27,6 +27,7 @@ public class LoginTests extends FrameworkLibrary {
 	}
 	
 	@Test(dataProvider="DP")
+	
 	public void testLogin(String username,String password)
 	{
 	    launchBrowser(prop.getProperty("patient_url")); 
@@ -37,6 +38,8 @@ public class LoginTests extends FrameworkLibrary {
 		Assert.assertEquals(actualText, expectedText);
 		
 	}
+	
+	
 
 	
 }
