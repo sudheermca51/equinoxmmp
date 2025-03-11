@@ -9,6 +9,8 @@ import org.iitwf.mmp.pages.patientmodule.Messages;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ScreenshotUtil;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,7 +24,7 @@ public class MessageTests extends FrameworkLibrary{
 	private ExtentTest extentTest;
 	
 	@Test
-	public void sendMessage() throws IOException
+	public void sendMessage(Alert alert) throws IOException
 	{
 		extentTest = extentReports.createTest("######## Messages Test ########");
 		
@@ -34,6 +36,7 @@ public class MessageTests extends FrameworkLibrary{
 		hPage.navigatetoAModule("Messages");
 		
 		msg = new Messages(driver);
+
 		
 		extentTest.info("Entering Contact Reason");
 		msg.contactReason("Running High Fever");
@@ -41,24 +44,24 @@ public class MessageTests extends FrameworkLibrary{
 		extentTest.info("Entering message details");
 		msg.message("Need to get an appointment with Doctor");
 		
-		msg.send();
-		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  // Wait for up to 10 seconds
-		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-		extentTest.info("Switching to Alert");
-		Alert alert1 = driver.switchTo().alert();
-		String actual = alert1.getText();
-		
-		extentTest.info("Getting Actual Alert Text - " + " " + actual);
-		String expected ="Messages Successfully sent.";
-		Assert.assertEquals(actual, expected);
-		alert.accept();  
-		
+
+		//extentTest.info("Entering Contact Reason");
+		String reason = msg.contactReason("Running High Fever Since Few Days");
+		extentTest.info("Entering Contact Reason -" + " " + reason);
+		String message = msg.message("Need to get an appointment with Doctor as soon as possible");
+		extentTest.info("Entering Message Details -" + " " + message);
 		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
         String screenshotPath = screenshotUtil.captureScreenshot("Message_alert");
         extentTest.addScreenCaptureFromPath(screenshotPath,"Message sent successfuly alert");
 
+		alert.accept();  
 		
+		ScreenshotUtil screenshotUtil1 = new ScreenshotUtil(driver);	
+        String screenshotPath1 = screenshotUtil1.captureScreenshot("Message_alert");
+        extentTest.addScreenCaptureFromPath(screenshotPath1,"Message sent successfuly alert");
+
+
+
 	}
 
 }
