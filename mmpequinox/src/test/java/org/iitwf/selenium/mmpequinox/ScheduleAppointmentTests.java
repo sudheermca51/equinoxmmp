@@ -1,7 +1,6 @@
 package org.iitwf.selenium.mmpequinox;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.io.IOException;
 import java.util.HashMap;
 import org.iitwf.mmp.pages.patientmodule.HomePage;
@@ -10,9 +9,7 @@ import org.iitwf.mmp.pages.patientmodule.ScheduleAppointmentPage;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ListenerUtility;
 import org.iitwf.selenium.lib.ScreenshotUtil;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
 
 
@@ -71,8 +68,7 @@ public class ScheduleAppointmentTests extends FrameworkLibrary{
 		screenshotUtil = new ScreenshotUtil(driver);	
         screenshotPath = screenshotUtil.captureScreenshot("ScheduleAppointment_Page2");
         extentTest.addScreenCaptureFromPath(screenshotPath,"Schedule_Appointment_Completed");
-
-		//AssertJUnit.assertEquals(actualHMap, expectedHMap);		 
+		 
 	}
 }
 
