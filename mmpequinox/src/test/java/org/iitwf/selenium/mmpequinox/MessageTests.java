@@ -1,19 +1,12 @@
 package org.iitwf.selenium.mmpequinox;
 
 import java.io.IOException;
-import java.time.Duration;
-
 import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.mmp.pages.patientmodule.Messages;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ScreenshotUtil;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -45,7 +38,6 @@ public class MessageTests extends FrameworkLibrary{
 		msg.message("Need to get an appointment with Doctor");
 		
 
-		//extentTest.info("Entering Contact Reason");
 		String reason = msg.contactReason("Running High Fever Since Few Days");
 		extentTest.info("Entering Contact Reason -" + " " + reason);
 		String message = msg.message("Need to get an appointment with Doctor as soon as possible");
