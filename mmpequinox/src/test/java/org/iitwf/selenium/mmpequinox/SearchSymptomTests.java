@@ -1,6 +1,6 @@
 package org.iitwf.selenium.mmpequinox;
 
-import java.io.IOException;
+
 
 import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
@@ -16,7 +16,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 public class SearchSymptomTests extends FrameworkLibrary{
 	private ExtentTest extentTest;
-	SearchSymptomPage srchsymptomobj = null;
+	SearchSymptomPage srchsymptomobj;
 	@Parameters({"srchsymptom","invalidsrchsymptom"})
 	@Test
 	public void validateSearchSymptomBox(String srchsymptom,String invalidsrchsymptom) throws Exception  {
