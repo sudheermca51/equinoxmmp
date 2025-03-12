@@ -25,8 +25,11 @@ public class InformationPage {
 	WebDriver driver;
 	public InformationPage(WebDriver driver)
 	{
-		
 		this.driver = driver;
+		if (!driver.getTitle().equals("information")) {
+			throw new IllegalStateException("This is not Inforamtion Page," +
+					" current page is: " + driver.getCurrentUrl());
+		}
 		screenshotUtil = new ScreenshotUtil(driver);	
 	}
 	

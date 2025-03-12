@@ -8,6 +8,7 @@ import org.iitwf.mmp.pages.patientmodule.InformationPage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ListenerUtility;
+import org.iitwf.selenium.lib.ScreenshotUtil;
 import org.testng.annotations.Listeners;
 
 
@@ -32,11 +33,23 @@ public void InformationMessage() throws IOException
 	extentTest.info("clicking on Information Tile");
 	hPage.navigatetoAModule("Information");
 	
+	ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
+	String screenshotPath = screenshotUtil.captureScreenshot("Information Page");
+	extentTest.addScreenCaptureFromPath(screenshotPath,"Information Page");
 	
 	VIPage = new InformationPage(driver);
 	boolean result = VIPage.validateInformation();
+	
 	AssertJUnit.assertTrue(result);
+	
+	
+	System.out.println("Expected FirstName::"+screenshotPath);
+	 System.out.println("ActualFirstName::"+screenshotPath);
+  
 	extentTest.info("Display the information");
+	
+	
+
 		
 	}	
 
