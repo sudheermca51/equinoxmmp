@@ -15,8 +15,8 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.ExtentTest;
 
 public class SearchSymptomTests extends FrameworkLibrary{
-	private ExtentTest extentTest;
-	SearchSymptomPage srchsymptomobj;
+	private ExtentTest extentTest ;
+	
 	@Parameters({"srchsymptom","invalidsrchsymptom"})
 	@Test
 	public void validateSearchSymptomBox(String srchsymptom,String invalidsrchsymptom) throws Exception  {
@@ -28,7 +28,7 @@ public class SearchSymptomTests extends FrameworkLibrary{
 		HomePage hPage = new HomePage(driver);
 		hPage.navigatetoAModule("Search Symptoms");
 		extentTest.info("Navigating to Schedule Appointment");
-		srchsymptomobj =  PageFactory.initElements(driver,SearchSymptomPage.class);
+		SearchSymptomPage srchsymptomobj = new SearchSymptomPage(driver);	
 		rMsg = srchsymptomobj.searchSymptom(srchsymptom);
 		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
 		String screenshotPath = screenshotUtil.captureScreenshot("Valid_Search_Symptom");

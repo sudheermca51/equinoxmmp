@@ -15,6 +15,8 @@ public class SearchSymptomPage {
 	@FindBy (xpath="//table[@class='table']/tbody/tr/td")
 	private WebElement displayedSymp;
 	
+	
+	
 	public SearchSymptomPage(WebDriver driver) {
 		this.driver = driver;
 		if(!driver.getTitle().equals("search Symptoms")) {
