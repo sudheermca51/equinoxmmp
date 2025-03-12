@@ -40,6 +40,7 @@ public class LoginTests extends FrameworkLibrary {
 		extentTest.info("Expected text - " + " " + expectedText);
 		SoftAssert sa = new SoftAssert();
 		sa.assertEquals(actualText, expectedText);
+		
 		sa.assertAll();
 		
 		
