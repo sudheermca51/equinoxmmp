@@ -19,7 +19,22 @@ public class LoginTests extends FrameworkLibrary {
 //
 //			String expectedText = "Patient Portal";
 	
-	@DataProvider(name="DP")
+	@Test 
+	(description="valid creds")//excel- read from config
+	public void testLoginCreds()
+	{
+	    launchBrowser(prop.getProperty("patient_url")); 
+		MMPUtility mmpUtil = new MMPUtility(driver);
+		mmpUtil.login(prop.getProperty("patient_username"),prop.getProperty("patient_password"));
+		String actualText = driver.findElement(By.xpath("//h3[normalize-space()='Patient Portal']")).getText();
+		String expectedText = "Patient Portal";
+		Assert.assertEquals(actualText, expectedText);
+		
+	}
+	
+  @Test
+	(description="invalid creds") //→> excel - nof from config file
+  @DataProvider(name="DP")
 	public String[][] feedData() throws IOException
 	{
 		String inputData[][] = ExcelUtils.getCellData("mmpdata.xlsx");
@@ -38,8 +53,4 @@ public class LoginTests extends FrameworkLibrary {
 		Assert.assertEquals(actualText, expectedText);
 		
 	}
-	
-	
-
-	
 }
