@@ -10,6 +10,7 @@
       <class name="org.iitwf.selenium.mmpequinox.SanitySuite"/>
       <class name="org.iitwf.selenium.mmpequinox.EditProfileTests"/>
       <class name="org.iitwf.selenium.mmpequinox.MessageTests"/>
+       <class name="org.iitwf.selenium.mmpequinox.SearchSymptomsTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

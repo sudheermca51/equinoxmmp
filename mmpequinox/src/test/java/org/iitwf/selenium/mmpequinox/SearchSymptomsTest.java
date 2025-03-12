@@ -2,46 +2,47 @@ package org.iitwf.selenium.mmpequinox;
 
 import java.io.IOException;
 
+import org.iitwf.mmp.pages.patientmodule.HomePage;
 import org.iitwf.mmp.pages.patientmodule.MMPUtility;
+import org.iitwf.mmp.pages.patientmodule.SearchSymptom;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ScreenshotUtil;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentTest;
 
 
-	public class SearchSymptoms extends FrameworkLibrary {
+	public class SearchSymptomsTest extends FrameworkLibrary {
 
+		SearchSymptom symp;
 		private ExtentTest extentTest;
 
 		@Test
 		public void validateSearchSymptomTest() throws IOException {
 
-			extentTest = extentReports.createTest("Validate Search Symptom Test");
+			extentTest = extentReports.createTest("#####Validate Search Symptom Test#####");
 
 			launchBrowser(prop.getProperty("patient_url"));
 
 			MMPUtility mmpUtil = new MMPUtility(driver);
 			mmpUtil.login(prop.getProperty("patient_username"), prop.getProperty("patient_password"));
-			driver.findElement(By.xpath("//span[normalize-space()='Search Symptoms']")).click();
-			extentTest.info("Navigating to Search Symptoms page");
-
+			HomePage hPage = new HomePage(driver);
+			extentTest.info("Clicking on Search Symptoms Tile");
+			hPage.navigatetoAModule("Search Symptoms");
+			symp = new SearchSymptom(driver);
+			String symptom = symp.symptomText("fever");
+			extentTest.info("Entering Symptom: " +symptom);
 			ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);
-			String screenshotPath = screenshotUtil.captureScreenshot("Search Symptoms page_Step 1");
+			String screenshotPath = screenshotUtil.captureScreenshot("Search_Symptoms_page_Step 1");
 			extentTest.addScreenCaptureFromPath(screenshotPath, "Search Symptoms Landing page");
-
-			//Entering the Symptoms
-			driver.findElement(By.id("search")).sendKeys("fever");
-			//click on Search button
-			driver.findElement(By.xpath("//input[@value='Search']")).click();
-
+			symp.search();
 			screenshotUtil = new ScreenshotUtil(driver);
 			screenshotPath = screenshotUtil.captureScreenshot("Search Symptoms page_Step 2");
 			extentTest.addScreenCaptureFromPath(screenshotPath, "Search Symptom results");
-
-			String actualRes = driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[1]")).getText();
+			String actualRes = symp.validateText();
 			String expectedRes = "fever";
 			Assert.assertEquals(actualRes, expectedRes);
 
@@ -55,22 +56,19 @@ import com.aventstack.extentreports.ExtentTest;
 
 			MMPUtility mmpUtil = new MMPUtility(driver);
 			mmpUtil.login(prop.getProperty("patient_username"), prop.getProperty("patient_password"));
-			driver.findElement(By.xpath("//span[normalize-space()='Search Symptoms']")).click();
-			extentTest.info("Navigating to Search Symptoms page");
-
+			HomePage hPage = new HomePage(driver);
+			extentTest.info("Clicking on Search Symptoms Tile");
+			hPage.navigatetoAModule("Search Symptoms");
+			symp = new SearchSymptom(driver);
+			String symptom = symp.symptomText("xyz");
+			extentTest.info("Entering Symptom: " +symptom);
 			ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);
-			String screenshotPath = screenshotUtil.captureScreenshot("Search Symptoms page_Step 1");
+			String screenshotPath = screenshotUtil.captureScreenshot("Search_Symptoms_page_Step 1");
 			extentTest.addScreenCaptureFromPath(screenshotPath, "Search Symptoms Landing page");
-
-			//Entering the Symptoms
-			driver.findElement(By.id("search")).sendKeys("xyz");
-			//click on Search button
-			driver.findElement(By.xpath("//input[@value='Search']")).click();
-
+			symp.search();
 			screenshotUtil = new ScreenshotUtil(driver);
-			screenshotPath = screenshotUtil.captureScreenshot("Search Symptoms Invalid_Step 2");
-			extentTest.addScreenCaptureFromPath(screenshotPath, "Search Symptoms Invalid results");
-
+			screenshotPath = screenshotUtil.captureScreenshot("Search Symptoms page_Step 2");
+			extentTest.addScreenCaptureFromPath(screenshotPath, "Search Symptom results");
 			if(driver.getPageSource().contains("xyz")) {
 
 				System.out.println("Test case failed");
