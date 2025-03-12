@@ -5,7 +5,14 @@
 	  <parameter name="srchsymptom" value="cold" />
 	  <parameter name="invalidsrchsymptom" value="ABC" />
 	  
-    <classes>                                 
+    <classes> 
+		<class name="org.iitwf.selenium.mmpequinox.SanitySuiteValidateText"/>
+      <class name="org.iitwf.selenium.mmpequinox.ScheduleAppointmentTests"/>
+      <class name="org.iitwf.selenium.mmpequinox.RegistrationPatientTests"/>
+      <class name="org.iitwf.selenium.mmpequinox.LoginTests"/>
+      <class name="org.iitwf.selenium.mmpequinox.SanitySuite"/>
+      <class name="org.iitwf.selenium.mmpequinox.EditProfileTests"/>
+      <class name="org.iitwf.selenium.mmpequinox.MessageTests"/>                                
 		<class name="org.iitwf.selenium.mmpequinox.SearchSymptomTests"/>
     </classes>
   </test> <!-- Test -->

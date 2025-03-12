@@ -7,7 +7,6 @@ import org.iitwf.mmp.pages.patientmodule.MMPUtility;
 import org.iitwf.mmp.pages.patientmodule.SearchSymptomPage;
 import org.iitwf.selenium.lib.FrameworkLibrary;
 import org.iitwf.selenium.lib.ScreenshotUtil;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -40,6 +39,7 @@ public class SearchSymptomTests extends FrameworkLibrary{
 		screenshotPath = screenshotUtil.captureScreenshot("Invalid_Search_Symptom");
         extentTest.addScreenCaptureFromPath(screenshotPath,"Navigation_To_Invalid_Search_Symptom");
 		sa.assertTrue(rMsg.isEmpty(), "Failed to search symptom");
+		sa.assertAll();
 		
 	}
 
