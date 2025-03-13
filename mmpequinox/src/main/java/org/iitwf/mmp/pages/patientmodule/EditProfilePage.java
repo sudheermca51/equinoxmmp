@@ -1,26 +1,34 @@
 package org.iitwf.mmp.pages.patientmodule;
 
+import java.time.Duration;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javaprograms.RandomEx;
+
 
 public class EditProfilePage {
 
+	protected WebDriver driver;
+	private By editButton=By.id("Ebtn");
+	private By fname=By.id("fname");
+	private By age=By.xpath("(//input[@id='age'])[1]");
+	private By save=By.id("Sbtn");
+	private By actualFN=By.xpath("//tbody/tr[2]/td[1]");
+	
 	//@FindBy(id="Ebtn")
 	//private WebElement editbutton;
 	
-	protected WebDriver driver;
+	
 	public EditProfilePage(WebDriver driver)
 	{
 		this.driver = driver;
-		if (!driver.getTitle().equals("Profile")) {
+		if (!driver.getTitle().equals("profile")) {
 			throw new IllegalStateException("This is not Profile Page," +
 					" current page is: " + driver.getCurrentUrl());
 		}
@@ -30,40 +38,56 @@ public class EditProfilePage {
 	{
 		Actions action = new Actions(driver);
 
-		action.moveToElement(driver.findElement(By.id("Ebtn")));
+		action.moveToElement(driver.findElement(editButton));
 		action.click();
 
 		//Fname Logic
-		WebElement fnameWE = driver.findElement(By.id("fname"));
+		WebElement fnameWE = driver.findElement(fname);
 		action.moveToElement(fnameWE);
 		action.sendKeys(fnameWE,Keys.CLEAR);
-		String expectedFName = JavaUtility.generateRandomString("QAAUT");
-		action.sendKeys(fnameWE,expectedFName);
-		String actualFName = fnameWE.getDomProperty("value");
+		String expectedName = JavaUtility.generateRandomString("QAAUT");
+		action.sendKeys(fnameWE,expectedName);
 		action.perform();
+		String expectedFName= fnameWE.getDomProperty("value");
+		
 
 		//Age Logic
-		WebElement ageWE = driver.findElement(By.id("age"));
+		WebElement ageWE = driver.findElement(age);
 		action.moveToElement(ageWE);
 		action.sendKeys(ageWE,Keys.CLEAR);
-		String ageExpected = JavaUtility.generateRandomDigits(100,999)+"";
+		String ageExpected = JavaUtility.generateRandomDigits(11,35)+"";
+		action.sendKeys(ageWE,ageExpected);
 		String ageActual = ageWE.getDomProperty("value");
-		action.sendKeys(ageActual,ageExpected);
 		action.perform();
 
 
-		WebElement saveButton = driver.findElement(By.id("Sbtn"));
+		WebElement saveButton = driver.findElement(save);
 		action.moveToElement(saveButton);
 		action.click(saveButton);
 		action.perform();
 
-		Alert alrt = driver.switchTo().alert();
-		System.out.println("Alert Text " + alrt.getText());
-		alrt.accept();
+		WebDriverWait waitSwitch = new WebDriverWait(driver, Duration.ofSeconds(10));
+		waitSwitch.until(ExpectedConditions.alertIsPresent());
+		
+		Alert alert=driver.switchTo().alert();
+		
+		alert.accept();
 
-		return actualFName;
+		return expectedFName;
 
 	}
+	
+	public String fetchProfileDetails()
+	{
+			
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//WebElement actualName =wait.until(ExpectedConditions.visibilityOfElementLocated(actualFN));
+		String actualFName=driver.findElement(actualFN).getAccessibleName();
+
+		return actualFName;
+	
+	}
+	
 	/*public  String editProfileTests()
 	{
 		editbutton.click();
