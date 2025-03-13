@@ -1,18 +1,27 @@
 package org.iitwf.mmp.pages.patientmodule;
 
 import java.time.Duration;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+
 
 public class EditProfilePage {
+	
+	public String expectedFName;
 
 	protected WebDriver driver;
 	private By editButton=By.id("Ebtn");
@@ -38,26 +47,49 @@ public class EditProfilePage {
 	{
 		Actions action = new Actions(driver);
 
+
 		action.moveToElement(driver.findElement(editButton));
-		action.click();
+        action.click();
 
 		//Fname Logic
 		WebElement fnameWE = driver.findElement(fname);
 		action.moveToElement(fnameWE);
+
 		action.sendKeys(fnameWE,Keys.CLEAR);
 		String expectedName = JavaUtility.generateRandomString("QAAUT");
 		action.sendKeys(fnameWE,expectedName);
 		action.perform();
 		String expectedFName= fnameWE.getDomProperty("value");
-		
 
+		action.sendKeys(Keys.CLEAR);
+		expectedFName = JavaUtility.generateRandomString("QAAUT");
+
+		System.out.println(expectedFName);
+		action.sendKeys(expectedFName);
+
+		action.sendKeys(expectedFName);
+		System.out.println("ExpectedFName :" + expectedFName);
+		action.perform();
 		//Age Logic
 		WebElement ageWE = driver.findElement(age);
 		action.moveToElement(ageWE);
+
 		action.sendKeys(ageWE,Keys.CLEAR);
 		String ageExpected = JavaUtility.generateRandomDigits(11,35)+"";
 		action.sendKeys(ageWE,ageExpected);
 		String ageActual = ageWE.getDomProperty("value");
+
+		action.sendKeys(Keys.CLEAR);
+		String agesExpected = JavaUtility.generateRandomDigits(30,99)+"";
+
+		String agesActual = ageWE.getDomProperty("value");
+		action.sendKeys(ageActual,ageExpected);
+
+		System.out.println("Expected Age :" + agesExpected);
+		action.sendKeys(agesExpected);
+		
+//		 String ageActual = ageWE.getDomProperty("value");
+//			action.sendKeys(ageActual,ageExpected);
 		action.perform();
 
 
@@ -65,8 +97,11 @@ public class EditProfilePage {
 		action.moveToElement(saveButton);
 		action.click(saveButton);
 		action.perform();
-
-		WebDriverWait waitSwitch = new WebDriverWait(driver, Duration.ofSeconds(10));
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.alertIsPresent());
+		
+       WebDriverWait waitSwitch = new WebDriverWait(driver, Duration.ofSeconds(10));
 		waitSwitch.until(ExpectedConditions.alertIsPresent());
 		
 		Alert alert=driver.switchTo().alert();
@@ -74,6 +109,32 @@ public class EditProfilePage {
 		alert.accept();
 
 		return expectedFName;
+
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+	
+		  
+		 
+//			 String actualFName = fnameWE.getDomProperty("value");
+//				System.out.println(actualFName);
+//				String actualFName = 	fnameWE.getDomAttribute("value");
+//				System.out.println(actualFName);
+			
+			
+		  
+		  
+		  
+		 
+		 
+
 
 	}
 	

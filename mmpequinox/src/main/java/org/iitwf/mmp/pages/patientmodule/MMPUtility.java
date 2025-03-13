@@ -20,6 +20,7 @@ public class MMPUtility {
 		driver.getTitle();
 	}
 	
+
 	public void launchBrowser(String url )
 	{
 		driver.manage().window().maximize();
@@ -33,4 +34,14 @@ public class MMPUtility {
 	
 }
 	
+
+	public void adminLogin(String username,String password)
+	{
+
+		driver.findElement(By.id("username")).sendKeys(username);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.name("admin")).click();
+		
+	}
+
 }
