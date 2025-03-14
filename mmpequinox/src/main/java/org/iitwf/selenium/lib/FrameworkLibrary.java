@@ -20,14 +20,12 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 
 public class FrameworkLibrary {
-	
-	protected Properties prop;
-	protected WebDriver driver;
-    protected ExtentReports extentReports;
-    
 
-	String environment,browser;
-	
+	protected static Properties prop;
+	protected WebDriver driver;
+	protected static ExtentReports extentReports;
+	private static String environment,browser;
+
 	@BeforeSuite
 	public void setUp()
 	{
@@ -36,32 +34,29 @@ public class FrameworkLibrary {
 	@BeforeTest
 	public void readProperties() throws IOException
 	{
-		
+
 		loadProperties("config//mmp_global.properties");
 		environment = prop.getProperty("environment");
 		browser = prop.getProperty("browser");
 		if(environment.equals("dev"))
 		{
 			loadProperties("config//mmp_dev.properties");
+			System.out.println("##########################Loaded the Properties##########################");
 		}
 		else 
 		{
 			loadProperties("config//mmp_qa.properties");
+			System.out.println("##########################Loaded the Properties##########################");
+
 		}
-		
-		System.out.println("patient username::: "+prop.getProperty("patient_username"));
-        // Set up ExtentReports
-		 
-		 
-       
 	}
 	public void loadExtentReportConfig()
 	{
-		
+
 		String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/ExtentReports_"+timestamp+".html");
-        extentReports = new ExtentReports();
-        extentReports.attachReporter(sparkReporter);
+		ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/ExtentReports_"+timestamp+".html");
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(sparkReporter);
 	}
 	public void loadProperties(String filePath) throws IOException
 	{
@@ -73,19 +68,23 @@ public class FrameworkLibrary {
 	@BeforeClass
 	public void invokeDriverInstance()
 	{
-		 
-		 if(browser.equals("chrome"))
-		 {
-			 driver = new ChromeDriver();
-			 driver.manage().window().maximize();
-			
-		 }
-		 else
-		 {
-			 driver = new EdgeDriver();
-			 driver.manage().window().maximize();
-			
-		 }
+
+		if(browser.equals("chrome"))
+		{
+			driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			System.out.println("##########################Launched the Browser##########################");
+
+
+		}
+		else
+		{
+			driver = new EdgeDriver();
+			driver.manage().window().maximize();
+			System.out.println("##########################Launched the Browser##########################");
+
+
+		}
 	}
 	public void launchBrowser(String url)
 	{
@@ -94,18 +93,18 @@ public class FrameworkLibrary {
 	@AfterSuite
 	public void tearDown()
 	{
-        // Close the WebDriver
-        if (driver != null) {
-            driver.quit();
-        }
-        // Flush the reports
-        if (extentReports != null) {
-            extentReports.flush();
-        }
+		// Close the WebDriver
+		if (driver != null) {
+			driver.quit();
+		}
+		// Flush the reports
+		if (extentReports != null) {
+			extentReports.flush();
+		}
 
-      
-		
+
+
 	}
-	
+
 
 }
