@@ -1,5 +1,11 @@
 package org.iitwf.mmp.pages.patientmodule;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
@@ -75,6 +81,7 @@ public class JavaUtility {
 		Random rand = new Random();
 		int digit1 =65+ rand.nextInt((90-65+1));
 		char upperCaseCh = (char) digit1;
+		System.out.println("Upper Case Char::: " + upperCaseCh);
 		
 		
 		int digit2 = 97+rand.nextInt((122-97+1));
@@ -84,6 +91,7 @@ public class JavaUtility {
 		System.out.println("Lower Case Char::: " + lowerCaseCh);
 		
 		String randomString = str+upperCaseCh+lowerCaseCh;
+		System.out.println("Random String :" + randomString);
 		
 		return randomString;
 		
@@ -107,5 +115,61 @@ public class JavaUtility {
 		System.out.println("Random Email ID:::::" + randomString);
 		return randomString;
 		
+	}
+	/**
+	 * Description : Method used to connect to MYSQL DB and fetch the values and return an array
+	 * 
+	 * @param uname
+	 * @param pword
+	 * @param dbname
+	 * @param tableName
+	 * @param hostip
+	 * @return String[][]
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public static String[][] getDBValues(String uname,String pword,String dbname,String tableName,String hostip) throws ClassNotFoundException, SQLException 
+	{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	//	Driver driver = new Driver();
+		/*
+		 * url a database url of the form jdbc:subprotocol:subnameuser 
+		 * the database user on whose behalf the connection is being madepassword 
+		 * the user's password
+		 */
+		String url="jdbc:mysql://"+hostip+":3306/"+dbname;
+		String username=uname;
+		String password=pword;
+		
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+											 ResultSet.CONCUR_READ_ONLY);
+		
+//	
+//		int  value = stmt.executeUpdate("INSERT INTO `mmp`.`patient_data` VALUES (30,'James','22/11/2021');");
+//		System.out.println("The rows are updated "+ value);
+//		
+		ResultSet rs =  stmt.executeQuery("Select * from "+dbname+"."+tableName);
+		rs.last();
+		int rows = rs.getRow();
+		System.out.println("Number of rows " + rows);
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int cols = rsmd.getColumnCount();
+		System.out.println("Number of cols: "+ cols);
+		
+		String data[][]= new String[rows][cols];
+		int i=0;
+		rs.first();
+		while(rs.next())
+		{
+			for(int j=0;j<cols;j++)
+			{
+				data[i][j]=rs.getString(j+1);
+				System.out.println(data[i][j]);
+				System.out.println("i :::"  + i +"@@@@"+"j:::::" + j);
+			}
+			i++;
+		}	
+		return data;
 	}
 }
