@@ -37,13 +37,13 @@ public class ExcelUtils {
 				{
 				case STRING:
 					data[i][j] = cell.getStringCellValue();
-					System.out.println("Printing the data in the excel::" + data[i][j]);
+					//System.out.println("Printing the data in the excel::" + data[i][j]);
 					break;
 
 				case NUMERIC:
 					data[i][j] = cell.getNumericCellValue()+"";
-					System.out.println("Fetching the numeric cell value");
-					System.out.println("Printing the data in the excel::" + data[i][j]);
+					//System.out.println("Fetching the numeric cell value");
+					//System.out.println("Printing the data in the excel::" + data[i][j]);
 					break;
 				}
 

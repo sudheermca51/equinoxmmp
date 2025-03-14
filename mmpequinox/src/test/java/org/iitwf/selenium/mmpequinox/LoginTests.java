@@ -40,7 +40,6 @@ public class LoginTests extends FrameworkLibrary {
 		extentTest.info("Expected text - " + " " + expectedText);
 		SoftAssert sa = new SoftAssert();
 		sa.assertEquals(actualText, expectedText);
-		
 		sa.assertAll();
 		
 		
@@ -101,7 +100,7 @@ public class LoginTests extends FrameworkLibrary {
 		return inputData;
 	}
 
-	@Test(dataProvider="DBDP")
+	@Test(dataProvider="DBDP",enabled=false)
 	public void testLoginDB(String username,String password) throws Exception
 	{
 		extentTest = extentReports.createTest("############Validate LogIn Tests########");

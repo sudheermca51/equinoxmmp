@@ -6,6 +6,12 @@ import org.testng.ITestResult;
 public class ListenerUtility implements ITestListener {
 	
 	@Override
+	public void onTestStart(ITestResult tr)
+	{
+		System.out.println("######################Executing the TestCase " + tr.getName()+"######################################");
+	}
+	
+	@Override
 	  public void onTestSuccess(ITestResult tr) {
 		System.out.println("######################TestCase Passed " + tr.getName());
 		System.out.println("Total Time in Execution of TestCase Name::"+ tr.getName() +"--"+tr.getEndMillis());
