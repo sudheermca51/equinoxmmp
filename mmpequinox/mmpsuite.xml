@@ -10,5 +10,6 @@
         <suite-file path="SanitySuiteValidateText.xml"/>
         <suite-file path="EditProfileTests.xml"/>
         <suite-file path="ScheduleAppointmentTests.xml"/>
+        <suite-file path="SearchSymptomsTest.xml"/>
     </suite-files>
 </suite>
