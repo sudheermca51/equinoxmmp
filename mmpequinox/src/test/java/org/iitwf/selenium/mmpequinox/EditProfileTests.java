@@ -26,11 +26,8 @@ public class EditProfileTests extends FrameworkLibrary {
 		MMPUtility mmpUtil = new MMPUtility(driver);
 		mmpUtil.login(prop.getProperty("patient_username"),prop.getProperty("patient_password"));
 		HomePage hPage = new HomePage(driver);
-		hPage.navigatetoAModule("Profile");
+		hPage.navigateToAProfileModule("Profile");
 		extentTest.info("Navigating to Profile Page");
-		
-		
-		
 		
 		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
 		String screenshotPath = screenshotUtil.captureScreenshot("EditProfilePage_step1");
@@ -38,35 +35,48 @@ public class EditProfileTests extends FrameworkLibrary {
 
 
 		EditProfilePage editProjObj = new EditProfilePage(driver);
+		String actualFName = editProjObj.editAllFields();
 
+		String expectedFName=editProjObj.expectedName;
+
+		System.out.println("AFName::"+ actualFName);
+		System.out.println("EFName::"+ expectedFName);
+		
+		extentTest.info("Expected FName::" + expectedFName);
+		extentTest.info("Actual FName::"+  actualFName );
 		
 		
-		String expectedFName=editProjObj.editAllFields();
-		String actualFName = editProjObj.fetchProfileDetails();
-		System.out.println("actualFName"+actualFName);
-		System.out.println("expectedFName"+expectedFName);
+		Assert.assertEquals(actualFName, expectedFName);
 
-		String actualFiName = editProjObj.editAllFields();
+	}
+   @Test
+	public void invalidEditProfileTest() throws IOException {
 
-		String expectedFiName=editProjObj.expectedFName;
 
-		System.out.println(actualFName);
-//		String expectedFName=prop.getProperty("patient_username");
-		String expectedfName = editProjObj.expectedFName;
+		extentTest = extentReports.createTest("############InValidate Edit Profile Tests########");
+
+	    launchBrowser(prop.getProperty("patient_url"));
+	    
+		MMPUtility mmpUtil = new MMPUtility(driver);
+		mmpUtil.login(prop.getProperty("patient_username"),prop.getProperty("patient_password"));
+		HomePage hPage = new HomePage(driver);
+		hPage.navigateToAProfileModule("Profile");
+		extentTest.info("Navigating to Profile Page");
+
+		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);	
+		String screenshotPath = screenshotUtil.captureScreenshot("EditProfilePage_step1");
+		extentTest.addScreenCaptureFromPath(screenshotPath,"Edit_Profile_Landing_Page");
+
 		
+		EditProfilePage editProjObj = new EditProfilePage(driver);
+		String errorMsg = editProjObj.invalidEditAllFields();
 
-		extentTest.info("Expected FName::" + expectedFiName);
-		extentTest.info("Actual FName::"+  actualFiName );
-		
-		
+		System.out.println("Error Message is:"+ errorMsg );
 
-		Assert.assertEquals(actualFName, expectedFName,"Profile page is not update successful");
-
-		Assert.assertEquals(actualFName, expectedfName);
+		extentTest.info("Error Message is::" +errorMsg );
 
 
 	}
-
 }
 
 

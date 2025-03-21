@@ -19,6 +19,10 @@ public class HomePage {
 	{
 		driver.findElement(By.xpath("//span[normalize-space()='"+moduleName+"']")).click();
 	}
+	public   void navigateToAProfileModule(String moduleName)
+	{
+		driver.findElement(By.xpath("//span[normalize-space()='"+moduleName+"']")).click();
+	}
 	public  HashMap<String, String>  fetchAppointmentDetails()
 	{
 

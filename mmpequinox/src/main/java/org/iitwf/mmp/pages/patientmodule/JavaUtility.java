@@ -145,10 +145,10 @@ public class JavaUtility {
 		Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 											 ResultSet.CONCUR_READ_ONLY);
 		
-//	
-//		int  value = stmt.executeUpdate("INSERT INTO `mmp`.`patient_data` VALUES (30,'James','22/11/2021');");
-//		System.out.println("The rows are updated "+ value);
-//		
+	
+		int  value = stmt.executeUpdate("INSERT INTO `mmp`.`patient_data` VALUES (30,'James','22/11/2021');");
+		System.out.println("The rows are updated "+ value);
+		
 		ResultSet rs =  stmt.executeQuery("Select * from "+dbname+"."+tableName);
 		rs.last();
 		int rows = rs.getRow();

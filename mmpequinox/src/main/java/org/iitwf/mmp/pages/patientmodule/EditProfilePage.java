@@ -2,9 +2,9 @@ package org.iitwf.mmp.pages.patientmodule;
 
 import java.time.Duration;
 
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,26 +14,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
-
-
 public class EditProfilePage {
 	
+	public String expectedName;
 	public String expectedFName;
-
-	protected WebDriver driver;
-	private By editButton=By.id("Ebtn");
-	private By fname=By.id("fname");
-	private By age=By.xpath("(//input[@id='age'])[1]");
-	private By save=By.id("Sbtn");
-	private By actualFN=By.xpath("//tbody/tr[2]/td[1]");
-	
 	//@FindBy(id="Ebtn")
 	//private WebElement editbutton;
+	/*private By editButton=By.id("Ebtn");
+	private By fname=By.xpath("(//input[@id='fname'])[1]");
+	private By age=By.xpath("(//input[@id='age'])[1]");
+	private By save=By.id("Sbtn");*/
+	private By actualFN=By.xpath("//tbody/tr[2]/td[1]");
 	
-	
+	protected WebDriver driver;
 	public EditProfilePage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -46,110 +39,58 @@ public class EditProfilePage {
 	public String editAllFields()
 	{
 		Actions action = new Actions(driver);
-
-
-		action.moveToElement(driver.findElement(editButton));
-        action.click();
+		action.moveToElement(driver.findElement(By.id("Ebtn")));
+		action.click();
 
 		//Fname Logic
-		WebElement fnameWE = driver.findElement(fname);
+		WebElement fnameWE = driver.findElement(By.id("fname"));
 		action.moveToElement(fnameWE);
-
 		action.sendKeys(fnameWE,Keys.CLEAR);
-		String expectedName = JavaUtility.generateRandomString("QAAUT");
-		action.sendKeys(fnameWE,expectedName);
+		String expectedFiName = JavaUtility.generateRandomString("QAAUT");
+		action.sendKeys(fnameWE,expectedFiName);
 		action.perform();
-		String expectedFName= fnameWE.getDomProperty("value");
-
-		action.sendKeys(Keys.CLEAR);
-		expectedFName = JavaUtility.generateRandomString("QAAUT");
-
-		System.out.println(expectedFName);
-		action.sendKeys(expectedFName);
-
-		action.sendKeys(expectedFName);
-		System.out.println("ExpectedFName :" + expectedFName);
-		action.perform();
+		String actualFName = fnameWE.getDomProperty("value");
+		
 		//Age Logic
-		WebElement ageWE = driver.findElement(age);
+		WebElement ageWE = driver.findElement(By.id("age"));
 		action.moveToElement(ageWE);
-
 		action.sendKeys(ageWE,Keys.CLEAR);
-		String ageExpected = JavaUtility.generateRandomDigits(11,35)+"";
+		String ageExpected = JavaUtility.generateRandomDigits(30,99)+"";
 		action.sendKeys(ageWE,ageExpected);
+		action.perform();
 		String ageActual = ageWE.getDomProperty("value");
 
-		action.sendKeys(Keys.CLEAR);
-		String agesExpected = JavaUtility.generateRandomDigits(30,99)+"";
-
-		String agesActual = ageWE.getDomProperty("value");
-		action.sendKeys(ageActual,ageExpected);
-
-		System.out.println("Expected Age :" + agesExpected);
-		action.sendKeys(agesExpected);
-		
-//		 String ageActual = ageWE.getDomProperty("value");
-//			action.sendKeys(ageActual,ageExpected);
-		action.perform();
-
-
-		WebElement saveButton = driver.findElement(save);
+		WebElement saveButton = driver.findElement(By.id("Sbtn"));
 		action.moveToElement(saveButton);
 		action.click(saveButton);
 		action.perform();
+        
+		//WebDriverWait wait2 = new WebDriverWait(driver,Duration.ofSeconds(25));
+		//wait2.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
+		//JavascriptExecutor js = ((JavascriptExecutor)driver);
+		//js.executeScript("arguments[0].click();",fnameWE);
+		//WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(15));
+		//wait1.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.alertIsPresent());
 		
-       WebDriverWait waitSwitch = new WebDriverWait(driver, Duration.ofSeconds(10));
-		waitSwitch.until(ExpectedConditions.alertIsPresent());
+		Alert alrt = driver.switchTo().alert();
+		System.out.println("Alert Text " + alrt.getText());
+		alrt.accept();
 		
-		Alert alert=driver.switchTo().alert();
-		
-		alert.accept();
-
-		return expectedFName;
-
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
+		/*WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
+			
+			 String actualFName = fnameWE.getDomProperty("value");
+				System.out.println(actualFName);
+			String actualFName = 	fnameWE.getDomAttribute("value");*/				
 	
-		  
-		 
-//			 String actualFName = fnameWE.getDomProperty("value");
-//				System.out.println(actualFName);
-//				String actualFName = 	fnameWE.getDomAttribute("value");
-//				System.out.println(actualFName);
-			
-			
-		  
-		  
-		  
-		 
-		 
-
-
+    expectedName=driver.findElement(actualFN).getAccessibleName();
+	
+	return actualFName;
 	}
-	
-	public String fetchProfileDetails()
-	{
-			
-		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		//WebElement actualName =wait.until(ExpectedConditions.visibilityOfElementLocated(actualFN));
-		String actualFName=driver.findElement(actualFN).getAccessibleName();
-
-		return actualFName;
-	
-	}
-	
-	/*public  String editProfileTests()
+	/*public  void editProfileTests()
 	{
 		editbutton.click();
 		
@@ -177,7 +118,6 @@ public class EditProfilePage {
 		{
 			System.out.println("FName value is updated");
 		}
-		return actualfnameValue;
 	}*/
 	 
 		public  String handleAlerts()
@@ -188,6 +128,43 @@ public class EditProfilePage {
 			return alertTxt;
 		}
 		
-		
-	
+		public String invalidEditAllFields()
+		{
+			Actions action = new Actions(driver);
+			action.moveToElement(driver.findElement(By.id("Ebtn")));
+			action.click();
+
+			
+			WebElement fnameWEb = driver.findElement(By.id("fname"));
+			action.moveToElement(fnameWEb);
+			action.sendKeys(fnameWEb,Keys.CLEAR);
+			expectedFName = "abc1234";
+			action.sendKeys(fnameWEb,expectedFName);
+			action.perform();
+			String actualFName = fnameWEb.getDomProperty("value");
+			
+			String actual = "";
+			if(expectedFName.equals(actualFName))
+			{
+				//System.out.println("please enter only alphabets");
+				WebElement nameWE = driver.findElement(By.xpath("(//p[@id='firsterr1'])[1]"));
+				actual= nameWE.getDomProperty("value");
+				
+			}
+			return actual;
+			
+			
+			
+			
+
+
+
+
+
+
+
 }
+		
+}		
+		
+

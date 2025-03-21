@@ -91,7 +91,7 @@ public class FrameworkLibrary {
 	{
 		driver.get(url);
 	}
-	@AfterSuite
+	/*@AfterSuite
 	public void tearDown()
 	{
         // Close the WebDriver
@@ -105,7 +105,7 @@ public class FrameworkLibrary {
 
       
 		
-	}
+	}*/
 	
 
 }
