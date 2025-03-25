@@ -28,4 +28,13 @@ public class MMPUtility {
 		driver.findElement(By.name("admin")).click();
 		
 	}
+	
+	public void docLogin(String username,String password)
+	{
+
+		driver.findElement(By.name("pusername")).sendKeys(username);
+		driver.findElement(By.name("ppassword")).sendKeys(password);
+		driver.findElement(By.name("prov")).click();
+		
+	}
 }
