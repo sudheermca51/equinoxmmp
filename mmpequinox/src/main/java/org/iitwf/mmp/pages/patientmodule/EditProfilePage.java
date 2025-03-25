@@ -79,13 +79,7 @@ public class EditProfilePage {
 		System.out.println("Alert Text " + alrt.getText());
 		alrt.accept();
 		
-		/*WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(15));
-		wait.until(ExpectedConditions.domAttributeToBe(fnameWE, "value", expectedFName));
-			
-			 String actualFName = fnameWE.getDomProperty("value");
-				System.out.println(actualFName);
-			String actualFName = 	fnameWE.getDomAttribute("value");*/				
-	
+		
     expectedName=driver.findElement(actualFN).getAccessibleName();
 	
 	return actualFName;

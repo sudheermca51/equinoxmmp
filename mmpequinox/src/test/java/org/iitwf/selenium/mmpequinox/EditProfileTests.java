@@ -32,7 +32,7 @@ public class EditProfileTests extends FrameworkLibrary {
 		String screenshotPath = screenshotUtil.captureScreenshot("EditProfilePage_step1");
 		extentTest.addScreenCaptureFromPath(screenshotPath,"Edit_Profile_Landing_Page");
 
-		extentTest.info("###################Validate Edit Profile Test#####################");
+		extentTest.info("####################Validate Edit Profile Test######################");
 		EditProfilePage editProjObj = new EditProfilePage(driver);
 		String actualFName = editProjObj.editAllFields();
 
