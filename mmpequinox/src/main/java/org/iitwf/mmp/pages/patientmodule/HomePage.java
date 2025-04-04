@@ -19,6 +19,12 @@ public class HomePage {
 	{
 		driver.findElement(By.xpath("//span[normalize-space()='"+moduleName+"']")).click();
 	}
+	public void navigateToAProfileModule(String moduleName) {
+		
+		driver.findElement(By.xpath("//span[normalize-space()='"+moduleName+"']")).click();	
+	
+	
+	}
 	public  HashMap<String, String>  fetchAppointmentDetails()
 	{
 
@@ -29,4 +35,5 @@ public class HomePage {
 		actualHMap.put("sym", driver.findElement(By.xpath("//table[@class='table']/tbody/tr[1]/td[3]")).getText().trim());
 		return actualHMap;
 	}
+	
 }
