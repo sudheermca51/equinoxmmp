@@ -12,6 +12,7 @@
         <suite-file path="EditProfileTests.xml"/>
         <suite-file path="ScheduleAppointmentTests.xml"/>
         <suite-file path="AddPrescriptionTests.xml"/>
+        <suite-file path="AcceptPatientTests.xml"/>
     </suite-files>
 </suite>
 
